@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../../db/connection");
 
 
-router.get("/api/parties", (req, res) => {
+router.get("/parties", (req, res) => {
   const sql = `SELECT * FROM parties`;
   db.query(sql, (err, rows) => {
     if (err) {
@@ -17,7 +17,7 @@ router.get("/api/parties", (req, res) => {
   });
 });
 
-router.get("/api/party/:id", (req, res) => {
+router.get("/party/:id", (req, res) => {
   const sql = `SELECT * FROM parties WHERE id = ?`;
   const params = [req.params.id];
   db.query(sql, params, (err, row) => {
@@ -32,7 +32,7 @@ router.get("/api/party/:id", (req, res) => {
   });
 });
 
-router.delete("/api/party/:id", (req, res) => {
+router.delete("/party/:id", (req, res) => {
   const sql = `DELETE FROM parties WHERE id = ?`;
   const params = [req.params.id];
   db.query(sql, params, (err, result) => {
